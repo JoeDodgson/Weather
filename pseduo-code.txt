@@ -1,0 +1,90 @@
+index.html
+Header across top of page
+1 div container for the rest of the content
+    4 column container:
+        Search bar
+        History of cities (ul) - we will dynamically append li elements to this in the script.js
+    8 column container:
+        div for current weather conditions - class = row
+            12 column container
+                h3 header - name of city + current date + image of current weather (icon given by API)
+                h5 - Temp
+                h5 - Humidity
+                h5 - Wind speed
+                h5 - UV - color coded depending on value. if UV<3 green; else if UV<7; else yellow; else red.
+        div for forecast weather conditions - class = row
+            12 column container
+                Header - 5-day weather forecast
+                5 no. equal size + style cards. 2 column 
+                    date
+                    weather icon
+                    temperature
+                    Humidity
+
+style.css
+
+script.js
+Global variable = API key
+Global variable getting the local storage (Array). If null, set default to be empty
+jquery ready function
+    -Check the local storage variable. If something is there, then call createCityHistory and pass the city name
+    -attach click event to the list items - when clicked, the li item passes the cityName into the function getCurrentWeather (and execute this function)
+    -If local storage array. length > 0 , then call the getCurrentWeather and pass the array[array.length - 1] into the function.
+    -Search button click
+        -Get the input value
+        -Clear the input form
+        -Add the input value to the local storage. 
+            If (indexof the new searched city = -1){
+                push the newly searched city into this array
+                call function createCityHistory, passing the city name
+            }
+            Call getCurrentWeather and pass the cityName
+
+function getCurrentWeather(cityName) {
+
+    $.ajax({
+      type: "GET",
+      url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${apiKey}&units=imperial`,
+      dataType: "json",
+      success: function(data) {
+          //Callback function should update the weather data displayed (except UV index, which comes from its own API)
+          //Pass data.coordinate.lat and data.coordinate.lon to getUVIndex() (and execute this function)
+          //Call getForecast function, and pass the cityName
+      }
+    });
+
+}
+
+function getUVIndex(lat,lon) {
+
+     $.ajax({
+      type: "GET",
+      url: `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`,
+      dataType: "json",
+      success: function(data) {
+          //Upate the UV h5 element in the main weather display
+      }
+    });
+
+}
+
+function getForecast(cityName) {
+
+     $.ajax({
+      type: "GET",
+      url:`http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
+      dataType: "json",
+      success: function(data) {
+          //Update the 5 days forecast section - dynamically create the 5 cards
+      }
+    });
+
+}
+
+
+function createCityHistory(cityName) {
+
+    //creates a new li element. Text = cityName value.
+    //append to ul.
+
+}
