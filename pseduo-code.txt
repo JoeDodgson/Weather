@@ -3,23 +3,23 @@ DONE Header across top of page
 DONE 1 div container for the rest of the content
     DONE 3 column container:
         DONE Search bar
-        History of cities (ul) - we will dynamically append li elements to this in the script.js
+        DONE History of cities (ul) - we will dynamically append li elements to this in the script.js
     DONE 9 column container:
-        div for current weather conditions - class = row
-            12 column container
-                h3 header - name of city + current date + image of current weather (icon given by API)
-                h5 - Temp
-                h5 - Humidity
-                h5 - Wind speed
-                h5 - UV - color coded depending on value. if UV<3 green; else if UV<7; else yellow; else red.
-        div for forecast weather conditions - class = row
-            12 column container
-                Header - 5-day weather forecast
-                5 no. equal size + style cards. 2 column 
-                    date
-                    weather icon
-                    temperature
-                    Humidity
+        DONE div for current weather conditions - class = row
+            DONE 12 column container
+                DONE h3 header - name of city + current date + image of current weather (icon given by API)
+                DONE h5 - Temp
+                DONE h5 - Humidity
+                DONE h5 - Wind speed
+                DONE h5 - UV - color coded depending on value. if UV<3 green; else if UV<7; else yellow; else red.
+        DONE div for forecast weather conditions - class = row
+            DONE 12 column container
+                DONE Header - 5-day weather forecast
+                DONE 5 no. equal size + style cards. 2 column 
+                    DONE date
+                    DONE weather icon
+                    DONE temperature
+                    DONE Humidity
 
 style.css
 Make the page responsive

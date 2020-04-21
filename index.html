@@ -20,42 +20,87 @@
 
     <!-- Main tag contains the all of the content of the page below the header -->
     <main>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 bg-light search-history">
-            <h5>Search for a city:</h5>
+        <div class="bg-light row margin-0">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 search-history">
+                <h5>Search for a city:</h5>
 
-            <form class="form-group clearfix">
+                <form class="form-group clearfix">
 
-                <!-- User enters a city in the input form -->
-                <input type="text" placeholder="Search" name="search" class="form-control" id="city-input"/>
+                    <!-- User enters a city in the input form -->
+                    <input type="text" placeholder="Search" name="search" class="form-control" id="city-input"/>
 
-                <!-- User clicks the search button to submit the search -->
-                <button type="submit" class="btn btn-primary" id="submit-btn"><i class="fa fa-search"></i></button>
-            </form>
+                    <!-- User clicks the search button to submit the search -->
+                    <button type="submit" class="btn btn-primary" id="submit-btn"><i class="fa fa-search"></i></button>
+                </form>
 
-            <!-- List of all the cities the user searched for -->
-            <div class="text-secondary cities-list">
-                <div class="boxed">
-                    Placeholder - city
+                <!-- List of all the cities the user searched for -->
+                <div class="text-secondary cities-list">
+                    <div class="boxed">
+                        Placeholder - city
+                    </div>
+                    <div class="boxed">
+                        Placeholder - city
+                    </div>
                 </div>
-                <div class="boxed">
-                    Placeholder - city
+            </div>
+
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 city-weather bg-white">
+                <div class="current-conditions row boxed">
+                    <h3>City (date) weather icon - placeholder </h3>
+                    <h6 id="current-temp">Temperature - placeholder</h6>
+                    <h6 id="current-hum">Humidity - placeholder</h6>
+                    <h6 id="current-wind">Wind speed - placeholder</h6>
+                    <h6 id="current-uv">UV index - placeholder</h6>
+                </div>
+
+                <div class="row forecast">
+                    <h3>5-day forecast:</h3>
+                    <div class="card text-white bg-primary mb-3 col-md-2">
+                        <div class="card-body">
+                            <h5 class="card-title">date</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">temp</p>
+                            <p class="card-text">humidity</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card text-white bg-primary mb-3 col-md-2">
+                        <div class="card-body">
+                            <h5 class="card-title">date</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">temp</p>
+                            <p class="card-text">humidity</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white bg-primary mb-3 col-md-2">
+                        <div class="card-body">
+                            <h5 class="card-title">date</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">temp</p>
+                            <p class="card-text">humidity</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white bg-primary mb-3 col-md-2">
+                        <div class="card-body">
+                            <h5 class="card-title">date</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">temp</p>
+                            <p class="card-text">humidity</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white bg-primary mb-3 col-md-2">
+                        <div class="card-body">
+                            <h5 class="card-title">date</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">temp</p>
+                            <p class="card-text">humidity</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 city-weather">
-            <div class="current-conditions row boxed">
-                <h3>City (date) weather icon - placeholder </h3>
-                <h6 id="current-temp">Temperature - placeholder</h6>
-                <h6 id="current-hum">Humidity - placeholder</h6>
-                <h6 id="current-wind">Wind speed - placeholder</h6>
-                <h6 id="current-uv">UV index - placeholder</h6>
-            </div>
-
-            <div class="5-day-forecast row">
-
-            </div>
-
         </div>
     </main>
 </body>
