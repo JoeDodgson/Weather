@@ -1,5 +1,5 @@
 index.html
-Header across top of page
+DONE Header across top of page
 1 div container for the rest of the content
     4 column container:
         Search bar
