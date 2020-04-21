@@ -1,10 +1,10 @@
 index.html
 DONE Header across top of page
-1 div container for the rest of the content
-    4 column container:
-        Search bar
+DONE 1 div container for the rest of the content
+    DONE 3 column container:
+        DONE Search bar
         History of cities (ul) - we will dynamically append li elements to this in the script.js
-    8 column container:
+    DONE 9 column container:
         div for current weather conditions - class = row
             12 column container
                 h3 header - name of city + current date + image of current weather (icon given by API)
@@ -22,6 +22,7 @@ DONE Header across top of page
                     Humidity
 
 style.css
+Make the page responsive
 
 script.js
 Global variable = API key

@@ -3,5 +3,43 @@
     display: block;
 }
 
+.dark-text {
+    color: #343a40;
+}
 
+.boxed {
+    width: 100%;
+    padding: 7.5px 0 7.5px 15px;
+    background: white;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    margin-top: -2px;
+}
 
+#city-input {
+    width: 75%;
+}
+
+h6 {
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+#submit-btn, #city-input {
+    display: inline;
+    float: left;
+}
+
+.form-group {
+    float: none;
+}
+
+.cities-list {
+    padding-bottom: 15px;
+}
+
+.clearfix::after {
+    Content: " ";
+    Display: block;
+    Clear: both;
+  }

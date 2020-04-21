@@ -9,12 +9,43 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="./assets/style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <!-- Dark header across the top of the page -->
     <header class="navbar navbar-dark bg-dark text-center weather-header">
         <h1>Weather dashboard</h1>
     </header>
+
+    <!-- Main tag contains the all of the content of the page below the header -->
+    <main class="">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 bg-light">
+            <h6>Search for a city:</h6>
+
+            <form class="form-group clearfix">
+
+                <!-- User enters a city in the input form -->
+                <input type="text" placeholder="Search" name="search" class="form-control" id="city-input"/>
+
+                <!-- User clicks the search button to submit the search -->
+                <button type="submit" class="btn btn-primary" id="submit-btn"><i class="fa fa-search"></i></button>
+            </form>
+
+            <!-- List of all the cities the user searched for -->
+            <div class="text-secondary cities-list">
+                <div class="boxed">
+                    Placeholder - city
+                </div>
+                <div class="boxed">
+                    Placeholder - city
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-9">
+            
+        </div>
+    </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./assets/script.js"></script>
