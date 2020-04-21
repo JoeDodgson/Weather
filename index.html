@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="./assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Dark header across the top of the page -->
@@ -18,9 +19,9 @@
     </header>
 
     <!-- Main tag contains the all of the content of the page below the header -->
-    <main class="">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 bg-light">
-            <h6>Search for a city:</h6>
+    <main>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 bg-light search-history">
+            <h5>Search for a city:</h5>
 
             <form class="form-group clearfix">
 
@@ -42,8 +43,19 @@
             </div>
         </div>
 
-        <div class="col-xl-9">
-            
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 city-weather">
+            <div class="current-conditions row boxed">
+                <h3>City (date) weather icon - placeholder </h3>
+                <h6 id="current-temp">Temperature - placeholder</h6>
+                <h6 id="current-hum">Humidity - placeholder</h6>
+                <h6 id="current-wind">Wind speed - placeholder</h6>
+                <h6 id="current-uv">UV index - placeholder</h6>
+            </div>
+
+            <div class="5-day-forecast row">
+
+            </div>
+
         </div>
     </main>
 </body>

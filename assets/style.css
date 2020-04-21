@@ -7,22 +7,43 @@
     color: #343a40;
 }
 
-.boxed {
+.boxed, .current-conditions {
     width: 100%;
-    padding: 7.5px 0 7.5px 15px;
     background: white;
     border: 1px solid #ced4da;
     border-radius: 2px;
     margin-top: -2px;
 }
 
+.boxed {
+    padding: 7.5px 0 7.5px 15px;
+}
+
+.current-conditions {
+    margin: 0;
+    padding: 20px;
+}
+
 #city-input {
     width: 75%;
 }
 
-h6 {
+h3 {
+    margin-bottom: 30px;
+}
+
+h3, h6 {
+    width: 100%;
+}
+
+h5 {
     font-size: 20px;
     padding-top: 10px;
+}
+
+h6 {
+    margin-bottom: 20px;
+    font-family: 'Assistant', sans-serif;
 }
 
 #submit-btn, #city-input {
@@ -42,4 +63,13 @@ h6 {
     Content: " ";
     Display: block;
     Clear: both;
-  }
+}
+
+.search-history, .city-weather {
+    display: inline;
+    float: left;
+}
+
+.city-weather {
+    margin-top: 10px;
+}
