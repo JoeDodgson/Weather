@@ -30,16 +30,29 @@ DONE Global variable getting the local storage (Array). If null, set default to 
 DONE Attach click event to the list items - when clicked, the li item passes the cityName into the function getWeather (and executes this function)
 DONE jquery ready function
     DONE -Check the local storage variable. If something is there, then call createCityHistory
-    -If local storage array length > 0 , then call the getWeather and pass the array[array.length - 1] into the function.
-    -Search button click
-        -Get the input value
-        -Clear the input form
-        -Add the input value to the local storage. 
-            If (indexof the new searched city = -1){
-                push the newly searched city into this array
-                call function createCityHistory, passing the city name
+    DONE -If local storage array exists then call getWeather function and pass the array[array.length - 1] into the function.
+    DONE -Search button click
+        DONE -Get the input value
+        DONE -Clear the input form
+        DONE -Add the input value to the local storage. 
+            DONE If (indexof the new searched city = -1){
+                DONE push the newly searched city into this array
+                DONE call function createCityHistory, passing the city name
             }
-            Call getWeather and pass the cityName
+            DONE Call getWeather and pass the cityName
+DONE Define getWeather function:
+    -Takes an argument of cityName
+    -Concatenates the city name together with the rest of the OWM API call URL and the API key
+    -Performs an ajax call to retrieve data using the concatenated URL
+    -If successful:
+        -update the current weather data displayed and the 5-day forecast
+        -Pass data.coordinate.lat and data.coordinate.lon to getUVIndex() (and execute this function)
+
+
+Optional extras
+-hover behaviour over the city history and show mouse icon over the city
+
+Notes on functions:
 
 function getWeather(cityName) {
 
@@ -54,6 +67,15 @@ function getWeather(cityName) {
       }
     });
 
+     $.ajax({
+      type: "GET",
+      url:`http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
+      dataType: "json",
+      success: function(data) {
+          //Update the 5 days forecast section - dynamically create the 5 cards
+      }
+    });
+
 }
 
 function getUVIndex(lat,lon) {
@@ -64,19 +86,6 @@ function getUVIndex(lat,lon) {
       dataType: "json",
       success: function(data) {
           //Upate the UV h5 element in the main weather display
-      }
-    });
-
-}
-
-function getForecast(cityName) {
-
-     $.ajax({
-      type: "GET",
-      url:`http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
-      dataType: "json",
-      success: function(data) {
-          //Update the 5 days forecast section - dynamically create the 5 cards
       }
     });
 
