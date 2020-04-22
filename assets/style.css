@@ -94,7 +94,37 @@ h6 {
     margin: 0;
 }
 
-#current-weather-header, #current-weather-icon {
+#current-weather-header, #current-weather-icon, #statictext-uv, #current-uv {
     display: inline;
     width: auto;
+}
+
+#current-uv {
+    margin: 7.5px 0 0 5px;
+    padding: 2.5px 5px 2.5px 5px;
+    border-radius: 5px;
+    height: 24px;
+}
+
+.low {
+    background: green;
+    color: white;
+}
+
+.moderate {
+    background: yellow;
+}
+
+.high {
+    background: orange;
+}
+
+.very-high {
+    background: red;
+    color: white;
+}
+
+.extreme {
+    background: purple;
+    color: white;
 }

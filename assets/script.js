@@ -1,12 +1,14 @@
 // Declare variables
 var openWeatherMapAPIkey = "e0f8ef0d68d0fa761676e0a5997449c5";
+var today;
 var cityName = "";
 var lat;
 var lon;
 var currentTemp;
 var currentHumidity;
 var currentWindSpeed;
-var today;
+var currentUVIndex;
+
 
 // Retrieve the previous searches from local storage
 // var citiesHistory = localStorage.getItem("citiesHistory") || "";
@@ -81,10 +83,6 @@ function getWeather(cityName){
     
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + openWeatherMapAPIkey + "&units=metric"; 
     
-    // API call for weather: "http://api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}"
-    
-    // Example API call: "http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${apiKey}&units=imperial"
-    
     $.ajax({
         type: "GET",
         url: queryURL,
@@ -154,7 +152,28 @@ function getForecast(cityName){
 
 // A function to retrieve the UV index and update the display on the web page 
 function getUVIndex(lat,lon) {
-    
+    queryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon  + "&appid=" + openWeatherMapAPIkey;
+    $.ajax({
+        type: "GET",
+        url: queryURL,
+        dataType: "json",
+        success: function(data) {
+            currentUVIndex = data.value;
+            $("#current-uv").text(currentUVIndex);
+            $("#current-uv").removeClass("low moderate high very-high extreme");
+            if(currentUVIndex < 2.5){
+                $("#current-uv").addClass("low");
+            } else if(currentUVIndex < 5.5) {
+                $("#current-uv").addClass("moderate");
+            } else if(currentUVIndex < 7.5) {
+                $("#current-uv").addClass("high");
+            } else if(currentUVIndex < 10.5) {
+                $("#current-uv").addClass("very-high");
+            } else {
+                $("#current-uv").addClass("extreme");
+            }
+        }
+    })
 }
 
 // A function to update the display of city search history on the web page 

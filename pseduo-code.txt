@@ -23,6 +23,7 @@ DONE 1 div container for the rest of the content
 
 style.css
 Make the page responsive
+DONE Add styling for UV categorisation classes
 
 script.js
 DONE Global variable = API key
@@ -41,13 +42,24 @@ DONE jquery ready function
             }
             DONE Call getWeather and pass the cityName
 DONE Define getWeather function:
-    -Takes an argument of cityName
-    -Concatenates the city name together with the rest of the OWM API call URL and the API key
-    -Performs an ajax call to retrieve data using the concatenated URL
-    -If successful:
-        -update the current weather data displayed and the 5-day forecast
-        -Pass data.coordinate.lat and data.coordinate.lon to getUVIndex() (and execute this function)
+    DONE -Takes an argument of cityName
+    DONE -Concatenates the city name together with the rest of the OWM API call URL and the API key
+    DONE -Performs an ajax call to retrieve data using the concatenated URL
+    DONE -If successful:
+        DONE -update the current weather data displayed
+        DONE -call the function to update the UV index
+        -call the function to update the 5-day forecast
+        DONE -Pass data.coordinate.lat and data.coordinate.lon to getUVIndex() (and execute this function)
+DONE Define the UV index function:
+    DONE -Takes in the lat and lon coordinates
+    DONE -Concatenates the coordinates into a URL and performs the API call
+    DONE -If successful:
+        DONE -Retrieve the UV value
+        DONE -Update the UV value displayed
+        DONE -Apply a class to the UV value based on its value
+Define the getForecast function:
 
+Define the createCityHistory function:
 
 Optional extras
 -hover behaviour over the city history and show mouse icon over the city
@@ -66,7 +78,9 @@ function getWeather(cityName) {
           //Call getForecast function, and pass the cityName
       }
     });
+}
 
+function getForecast(cityName) {
      $.ajax({
       type: "GET",
       url:`http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
@@ -75,8 +89,8 @@ function getWeather(cityName) {
           //Update the 5 days forecast section - dynamically create the 5 cards
       }
     });
-
 }
+
 
 function getUVIndex(lat,lon) {
 
