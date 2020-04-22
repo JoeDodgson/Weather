@@ -65,10 +65,10 @@ DONE Define the getForecast function:
         DONE -create 5 card for the next 5 day forecast
 DONE Define the createCityHistory function:
     DONE Creates a new element for each element in the citiesHistory array
+DONE When you hit search, save the searched city in the array and store in local storage
+DONE Clear out old forecast cards before creating new ones 
 
-When you hit search, save the searched city in the array 
-
-Clear out old forecast cards before creating new ones 
+Fix past search button clicks - not working
 
 Optional extras
 -hover behaviour over the city history and show mouse icon over the city

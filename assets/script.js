@@ -10,8 +10,7 @@ var currentWindSpeed;
 var currentUVIndex;
 
 // Retrieve the previous searches from local storage
-var citiesHistory = localStorage.getItem("citiesHistory") || [];
-// var citiesHistory = ["New York", "San Francisco", "Birmingham"]
+var citiesHistory = JSON.parse(localStorage.getItem("citiesHistory")) || [];
 
 // When the document has loaded, display the weather for the last searched city
 $(document).ready(function() {
@@ -72,6 +71,9 @@ $("#submit-btn").click(function() {
         
         // Update the cities shown in the city history
         createCityHistory(citiesHistory); 
+
+        // Store the cities history in the local storage
+        localStorage.setItem("citiesHistory", JSON.stringify(citiesHistory));
         
         // Clear the searched text from the input
         $("#city-input").val("");
@@ -117,12 +119,13 @@ function getWeather(cityName){
             // Round the temperature to the nearest 0.1 degrees
             currentTemp = Math.round(data.main.temp * 10) / 10;
             currentHumidity = data.main.humidity;
-            currentWindSpeed = data.wind.speed;
+            // Convert wind speed from m/s to mph and round to the nearest 1 mph
+            currentWindSpeed = Math.round(data.wind.speed * 3600 / 1609.34);
             
             //Update the weather data displayed (except UV index, which comes from its own API)
-            $("#current-temp").text("Temperature: " + currentTemp + " °C");
-            $("#current-hum").text("Humidity: " + currentHumidity + " %");
-            $("#current-wind").text("Wind speed: " + currentWindSpeed + " m/s");
+            $("#current-temp").text("Temperature: " + currentTemp + "°C");
+            $("#current-hum").text("Humidity: " + currentHumidity + "%");
+            $("#current-wind").text("Wind speed: " + currentWindSpeed + "mph");
             
             //Pass data.coordinate.lat and data.coordinate.lon to getUVIndex() (and execute this function)
             lat = data.coord.lat;
@@ -159,8 +162,8 @@ function getForecast(cityName){
                 forecastTemp = Math.round(data.list[j].main.temp * 10) / 10;
                 // Humidity
                 forecastHumidity = data.list[j].main.humidity;
-                // Wind speed
-                forecastWind = data.list[j].wind.speed;
+                // Wind speed - convert from m/s to mph and round to the nearest 1 mph
+                forecastWind = Math.round(data.list[j].wind.speed * 3600 / 1609.34 );
 
                 var card = document.createElement("div");
                 card.setAttribute("class","card text-white bg-primary mb-3 col-md-2");
@@ -181,15 +184,15 @@ function getForecast(cityName){
 
                 var cardTemp = document.createElement("p");
                 cardTemp.setAttribute("class","card-text");
-                cardTemp.textContent = "Temp: " + forecastTemp + " °C";
+                cardTemp.textContent = "Temp: " + forecastTemp + "°C";
 
                 var cardHumidity = document.createElement("p");
                 cardHumidity.setAttribute("class","card-text");
-                cardHumidity.textContent = "Humidity: " + forecastHumidity + " %";
+                cardHumidity.textContent = "Humidity: " + forecastHumidity + "%";
 
                 var cardWind = document.createElement("p");
                 cardWind.setAttribute("class","card-text");
-                cardWind.textContent = "Wind speed: " + forecastWind + " m/s";
+                cardWind.textContent = "Wind speed: " + forecastWind + "mph";
 
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardIcon);
