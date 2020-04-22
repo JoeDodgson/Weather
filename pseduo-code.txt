@@ -64,19 +64,12 @@ DONE Define the getForecast function:
     DONE -If successful:
         DONE -create 5 card for the next 5 day forecast
 DONE Define the createCityHistory function:
-    -Creates a new element for each element in the citiesHistory array
+    DONE Creates a new element for each element in the citiesHistory array
 
 When you hit search, save the searched city in the array 
+
+Clear out old forecast cards before creating new ones 
 
 Optional extras
 -hover behaviour over the city history and show mouse icon over the city
 -When you hover over the UV index it explains the scale
-
-Notes on functions:
-
-function createCityHistory(cityName) {
-
-    //creates a new li element. Text = cityName value.
-    //append to ul.
-
-}

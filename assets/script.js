@@ -142,6 +142,9 @@ function getForecast(cityName){
         url: queryURL,
         dataType: "json",
         success: function(data) {
+            // Remove any previous forecast cards
+            $(".card").remove();
+
             //Update the 5 days forecast section - dynamically create the 5 cards
             for(i = 1; i <= 5; i++){
                 j = i * 8 - 1;
