@@ -110,11 +110,11 @@ function getWeather(cityName){
             // Get weather icon
             currentWeatherIconID = data.weather[0].icon;
             currentWeatherIconURL = "http://openweathermap.org/img/wn/" + currentWeatherIconID +"@2x.png";
-
+            
             // Update the current weather header
             $("#current-weather-header").text(dataCityName + " (" + currentDateString + ")  ");
             $("#current-weather-icon").attr("src",currentWeatherIconURL);
-
+            
             // Round the temperature to the nearest 0.1 degrees
             currentTemp = Math.round(data.main.temp * 10) / 10;
             currentHumidity = data.main.humidity;
@@ -124,13 +124,12 @@ function getWeather(cityName){
             $("#current-temp").text("Temperature: " + currentTemp + " °C");
             $("#current-hum").text("Humidity: " + currentHumidity + " %");
             $("#current-wind").text("Wind speed: " + currentWindSpeed + " m/s");
-
+            
             //Pass data.coordinate.lat and data.coordinate.lon to getUVIndex() (and execute this function)
             lat = data.coord.lat;
             lon = data.coord.lon;
-
             getUVIndex(lat,lon);
-
+            
             //Call getForecast function, and pass the cityName
             getForecast(cityName);
         }
@@ -138,15 +137,72 @@ function getWeather(cityName){
 }
 
 function getForecast(cityName){
-    // $.ajax({
-    //     type: "GET",
-    //     url:`http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
-    //     dataType: "json",
-    //     success: function(data) {
-    //         //Update the 5 days forecast section - dynamically create the 5 cards
-    //     }
-    // });
+    queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName  + "&appid=" + openWeatherMapAPIkey + "&units=imperial";
+    $.ajax({
+        type: "GET",
+        url: queryURL,
+        dataType: "json",
+        success: function(data) {
+            //Update the 5 days forecast section - dynamically create the 5 cards
+            console.log(data);
+            for(i = 1; i <= 5; i++){
+                j = i * 8 - 1;
+                // Retrieve the required data from the API
+                // Date
+                date = data.list[j].dt_txt;
+                forecastDate = date.slice(8,10) + "/" + date.slice(5,7) + "/" + date.slice(2,4);
+                // Weather icon (and convert into the icon image URL)
+                forecastIconID = data.list[j].weather[0].icon;
+                forecastIconURL = "http://openweathermap.org/img/wn/" + forecastIconID + "@2x.png";
+                // Temperature
+                forecastTemp = Math.round(data.list[j].main.temp * 10) / 10;
+                // Humidity
+                forecastHumidity = data.list[j].main.humidity;
+                // Wind speed
+                forecastWind = data.list[j].wind.speed;
 
+                var card = document.createElement("div");
+                card.setAttribute("class","card text-white bg-primary mb-3 col-md-2");
+
+                var cardBody = document.createElement("div");
+                cardBody.setAttribute("class","card-body");
+
+                var cardTitle = document.createElement("h5");
+                cardTitle.setAttribute("class","card-title");
+                cardTitle.textContent = forecastDate;
+
+                var cardIcon = document.createElement("img");
+                cardIcon.setAttribute("class","card-text");
+                cardIcon.setAttribute("height","45px");
+                cardIcon.setAttribute("width","45px");
+                cardIcon.setAttribute("alt","Weather icon");
+                cardIcon.setAttribute("src",forecastIconURL);
+
+                var cardTemp = document.createElement("p");
+                cardTemp.setAttribute("class","card-text");
+                cardTemp.textContent = "Temp: " + forecastTemp + " °C";
+
+                var cardHumidity = document.createElement("p");
+                cardHumidity.setAttribute("class","card-text");
+                cardHumidity.textContent = "Humidity: " + forecastHumidity + " %";
+
+                var cardWind = document.createElement("p");
+                cardWind.setAttribute("class","card-text");
+                cardWind.textContent = "Wind speed: " + forecastWind + " m/s";
+
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardIcon);
+                cardBody.appendChild(cardTemp);
+                cardBody.appendChild(cardHumidity);
+                cardBody.appendChild(cardWind);
+
+                card.appendChild(cardBody);
+
+                $(".forecast").append(card);
+            }            
+        }
+    });
+    
 }
 
 

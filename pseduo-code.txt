@@ -57,12 +57,19 @@ DONE Define the UV index function:
         DONE -Retrieve the UV value
         DONE -Update the UV value displayed
         DONE -Apply a class to the UV value based on its value
-Define the getForecast function:
+DONE Define the getForecast function:
+    DONE -Takes an argument of cityName
+    DONE -Concatenates the city name together with the rest of the OWM API call URL and the API key
+    DONE -Performs an ajax call to retrieve data using the concatenated URL
+    DONE -If successful:
+        -create 5 card for the next 5 day forecast
+
 
 Define the createCityHistory function:
 
 Optional extras
 -hover behaviour over the city history and show mouse icon over the city
+-When you hover over the UV index it explains the scale
 
 Notes on functions:
 
