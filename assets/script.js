@@ -121,7 +121,7 @@ function getWeather(cityName){
 function getForecast(cityName){
     
     // Concatenate the cityName into the OWM forecast API query URL
-    queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName  + "&appid=" + openWeatherMapAPIkey + "&units=imperial";
+    queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName  + "&appid=" + openWeatherMapAPIkey + "&units=metric";
     
     // ajax call using the query URL
     $.ajax({
