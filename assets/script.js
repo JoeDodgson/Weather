@@ -27,7 +27,7 @@ $(document).ready(function() {
 });
 
 // Event listener for the listed cities. A clicked city is passed into the getWeather function
-$(".city-history").click(function() {
+$(document).on("click", ".city-history", function() {
     var cityName = this.textContent;
     console.log(this);
     getWeather(cityName);

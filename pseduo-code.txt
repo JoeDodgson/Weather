@@ -64,11 +64,11 @@ DONE Define the createCityHistory function:
     DONE Creates a new element for each element in the citiesHistory array
 DONE When you hit search, save the searched city in the array and store in local storage
 DONE Clear out old forecast cards before creating new ones 
-Fix past search button clicks - not working
-Check whether clicking on a previously searched city reorders the list
 DONE Fix forecast temperature - request metric units
+DONE Fix past search button clicks - not working
+DONE Check whether clicking on a previously searched city reorders the list
 If there is nothing in the searchHistory, do not display the RHS
-If the API call is not successful, return the user a message saying something like "Sorry, we couldn't find the city you searched for"
+If the API call is not successful, return the user a message saying something like "Sorry, we couldn't find the city you searched for" and does not update the weather and forecast
 
 style.css
 DONE Add styling for UV categorisation classes
