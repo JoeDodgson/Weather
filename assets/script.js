@@ -9,10 +9,9 @@ var currentHumidity;
 var currentWindSpeed;
 var currentUVIndex;
 
-
 // Retrieve the previous searches from local storage
-// var citiesHistory = localStorage.getItem("citiesHistory") || "";
-var citiesHistory = ["New York", "San Francisco", "Birmingham"]
+var citiesHistory = localStorage.getItem("citiesHistory") || [];
+// var citiesHistory = ["New York", "San Francisco", "Birmingham"]
 
 // When the document has loaded, display the weather for the last searched city
 $(document).ready(function() {
@@ -26,6 +25,11 @@ $(document).ready(function() {
         // Pass the last searched city into the getWeather function    
         getWeather(citiesHistory[citiesHistory.length - 1]);
     }
+
+    else{
+
+    }
+
 });
 
 // Event listener for the listed cities. A clicked city is passed into the getWeather function
@@ -72,9 +76,6 @@ $("#submit-btn").click(function() {
         // Clear the searched text from the input
         $("#city-input").val("");
     }
-    
-    console.log(citiesHistory);
-    
 });
 
 // A function to retrieve the current & forecast weather and update the display on the web page 
@@ -88,9 +89,7 @@ function getWeather(cityName){
         url: queryURL,
         dataType: "json",
         success: function(data) {
-            console.log(data);
             dataCityName = data.name + ", " + data.sys.country;
-            console.log("dataCityName = " + dataCityName);
             
             today = new Date();
 
@@ -144,7 +143,6 @@ function getForecast(cityName){
         dataType: "json",
         success: function(data) {
             //Update the 5 days forecast section - dynamically create the 5 cards
-            console.log(data);
             for(i = 1; i <= 5; i++){
                 j = i * 8 - 1;
                 // Retrieve the required data from the API
@@ -234,7 +232,17 @@ function getUVIndex(lat,lon) {
 
 // A function to update the display of city search history on the web page 
 function createCityHistory(citiesHistory){
+    // Clear out the previous search history
+    $(".city-history").remove();
 
+    if(citiesHistory.length !== "" && citiesHistory.length !== "null"){    
+        for(i = 0; i < citiesHistory.length; i++){
+            var pastSearch = document.createElement("div");
+            pastSearch.setAttribute("class","city-history boxed");
+            pastSearch.textContent = citiesHistory[i];
+            $("#cities-list").append(pastSearch);
+        }
+    }
 }
 
 // Adds a zero in front of date and month if <10

@@ -62,56 +62,17 @@ DONE Define the getForecast function:
     DONE -Concatenates the city name together with the rest of the OWM API call URL and the API key
     DONE -Performs an ajax call to retrieve data using the concatenated URL
     DONE -If successful:
-        -create 5 card for the next 5 day forecast
+        DONE -create 5 card for the next 5 day forecast
+DONE Define the createCityHistory function:
+    -Creates a new element for each element in the citiesHistory array
 
-
-Define the createCityHistory function:
+When you hit search, save the searched city in the array 
 
 Optional extras
 -hover behaviour over the city history and show mouse icon over the city
 -When you hover over the UV index it explains the scale
 
 Notes on functions:
-
-function getWeather(cityName) {
-
-    $.ajax({
-      type: "GET",
-      url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${apiKey}&units=imperial`,
-      dataType: "json",
-      success: function(data) {
-          //Callback function should update the weather data displayed (except UV index, which comes from its own API)
-          //Pass data.coordinate.lat and data.coordinate.lon to getUVIndex() (and execute this function)
-          //Call getForecast function, and pass the cityName
-      }
-    });
-}
-
-function getForecast(cityName) {
-     $.ajax({
-      type: "GET",
-      url:`http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
-      dataType: "json",
-      success: function(data) {
-          //Update the 5 days forecast section - dynamically create the 5 cards
-      }
-    });
-}
-
-
-function getUVIndex(lat,lon) {
-
-     $.ajax({
-      type: "GET",
-      url: `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`,
-      dataType: "json",
-      success: function(data) {
-          //Upate the UV h5 element in the main weather display
-      }
-    });
-
-}
-
 
 function createCityHistory(cityName) {
 
