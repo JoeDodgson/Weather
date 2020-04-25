@@ -171,7 +171,7 @@ function getForecast(cityName){
                 
                 // Create a new element for the forecast card
                 var card = document.createElement("div");
-                card.setAttribute("class","card text-white bg-primary mb-3 col-md-2");
+                card.setAttribute("class","card text-white bg-primary mb-3 col-xs-5 col-sm-5 col-md-2");
                 
                 // Create a new element for the card body (to contain title, icon and text elements)
                 var cardBody = document.createElement("div");

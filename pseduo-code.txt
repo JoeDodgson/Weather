@@ -72,11 +72,11 @@ If the API call is not successful, return the user a message saying something li
 
 style.css
 DONE Add styling for UV categorisation classes
-Make the page responsive
-Comments on style.css
-
-Readme
+DONE Comments on style.css
+DONE Make the page responsive:
 
 Optional extras
 -hover behaviour over the city history and show mouse icon over the city
 -When you hover over the UV index it explains the scale
+
+Readme
