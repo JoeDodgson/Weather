@@ -8,15 +8,24 @@ var currentTemp;
 var currentHumidity;
 var currentWindSpeed;
 var currentUVIndex;
+var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
-// Retrieve the previous searches from local storage
-var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
 // When the document has loaded, display the weather for the last searched city
 $(document).ready(function() {
     
-    // If there is city history data, pass into the renderCityHistory and getWeather functions 
-    if(searchHistory !== []){
+    if (!localStorage.getItem("searchHistory")){
+        // Set the local storage value of searchHistory to be a blank array
+        localStorage.setItem("searchHistory","['']");
+        
+    }
+    else if(localStorage.getItem("searchHistory") !== "['']"){
+
+
+        // If data in searchHistory array, unhide city-weather section of the page
+        $("#city-weather").removeClass("d-none");
+        
+        searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
         
         // Pass all searched cities into the renderCityHistory function
         renderCityHistory(searchHistory);
@@ -24,12 +33,13 @@ $(document).ready(function() {
         // Pass the last searched city into the getWeather function    
         getWeather(searchHistory[searchHistory.length - 1]);
     }
+    
 });
+
 
 // Event listener for the listed cities. A clicked city is passed into the getWeather function
 $(document).on("click", ".city-history", function() {
     var cityName = this.textContent;
-    console.log(this);
     getWeather(cityName);
 });
 
@@ -47,6 +57,9 @@ $("#submit-btn").click(function() {
         // Passes the input text into the getWeather function
         cityName = $("#city-input").val();
         getWeather(cityName);
+
+        // Call the storeSearch function and pass in the cityName
+        storeSearch(cityName);
         
         // Clear the searched text from the input
         $("#city-input").val("");
@@ -111,8 +124,8 @@ function getWeather(cityName){
             // Call getForecast function and pass the cityName
             getForecast(cityName);
             
-            // Call the storeSearch function and pass in the cityName
-            storeSearch(cityName);
+            // Unhide city-weather section of the page
+            $("#city-weather").removeClass("d-none");
         }
     });
 }
@@ -256,7 +269,10 @@ function renderCityHistory(searchHistory){
     $(".city-history").remove();
 
     // Check to see if the searchHistory array is blank or does not exist
-    if(searchHistory !== [] && searchHistory !== "null"){
+    if(searchHistory[0] !== ""){
+
+        // If searchHistory array is not empty, display city-weather section of the page
+        $("#city-weather").removeClass("d-none");
 
         // Go through each element in the searchHistory array
         for(i = 0; i < searchHistory.length; i++){
@@ -270,16 +286,25 @@ function renderCityHistory(searchHistory){
             $("#cities-list").append(pastSearch);
         }
     }
+
+    else{
+        // If searchHistory array is empty, hide city-weather section of the page
+        $("#city-weather").addClass("d-none");
+    }
 }
 
 // Function to store the name in the searchHistory array and save to localStorage 
 function storeSearch(cityName){
-            
+    
     // Checks whether the searched city is in the searchHistory array
     var cityNameIndex = searchHistory.indexOf(cityName);
     
+    // If searchHistory array is blank, set the first element as the searched city
+    if(searchHistory[0] == ""){
+        searchHistory[0] = cityName;
+    }
     // If the searched city was not in the searchHistory array, add it at the end
-    if(cityNameIndex === -1){
+    else if(cityNameIndex === -1){
         searchHistory.push(cityName);
     }
     // If the searched city was already in the searchHistory array, move to the last element
