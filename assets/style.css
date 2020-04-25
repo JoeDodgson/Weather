@@ -151,6 +151,7 @@ h6 {
     height: 24px;
 }
 
+
 /* Responsiveness */
 @media (min-width: 1px) and (max-width: 767px){
     h3 {
@@ -169,4 +170,10 @@ h6 {
     .card-title {
         font-size: 22px;
     }
-  }
+}
+
+@media (min-width: 1px) and (max-width: 575px){
+    .city-history {
+        width: 50%;
+    }
+}
