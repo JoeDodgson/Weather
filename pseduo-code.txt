@@ -68,7 +68,7 @@ DONE Fix forecast temperature - request metric units
 DONE Fix past search button clicks - not working
 DONE Check whether clicking on a previously searched city reorders the list
 DONE If there is nothing in the searchHistory, do not display the RHS
-If the API call is not successful, return the user a message saying something like "Sorry, we couldn't find the city you searched for" and does not update the weather and forecast
+DONE If the API call is not successful, return the user a message saying something like "Sorry, we couldn't find the city you searched for" and does not update the weather and forecast
 
 style.css
 DONE Add styling for UV categorisation classes
@@ -78,5 +78,9 @@ DONE Make the page responsive:
 Optional extras
 -hover behaviour over the city history and show mouse icon over the city
 -When you hover over the UV index it explains the scale
+-Buttons to select the time of day for the 5 day weather forecast
+-Better styling
+-Plus icon to be more specific and search by country too 
+-Button to clear search history
 
 Readme
