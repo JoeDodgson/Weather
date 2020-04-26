@@ -63,7 +63,7 @@ $("#submit-btn").click(function() {
 function getWeather(cityName){
     
     // Concatenate the cityName into the OWM weather API query URL
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + openWeatherMapAPIkey + "&units=metric"; 
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + openWeatherMapAPIkey + "&units=metric"; 
     
     // ajax call to using the query URL
     $.ajax({
@@ -100,7 +100,7 @@ function getWeatherSuccess(data,cityName){
     
     // Get weather icon
     currentWeatherIconID = data.weather[0].icon;
-    currentWeatherIconURL = "http://openweathermap.org/img/wn/" + currentWeatherIconID +"@2x.png";
+    currentWeatherIconURL = "https://openweathermap.org/img/wn/" + currentWeatherIconID +"@2x.png";
     
     // Update the current weather header
     $("#current-weather-header").text(dataCityName + " (" + currentDateString + ")  ");
@@ -143,7 +143,7 @@ function getWeatherError(){
 function getForecast(cityName){
     
     // Concatenate the cityName into the OWM forecast API query URL
-    queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName  + "&appid=" + openWeatherMapAPIkey + "&units=metric";
+    queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName  + "&appid=" + openWeatherMapAPIkey + "&units=metric";
     
     // ajax call using the query URL
     $.ajax({
@@ -173,7 +173,7 @@ function getForecastSuccess(data){
         
         // Weather icon - use the ID to create an icon image URL
         forecastIconID = data.list[j].weather[0].icon;
-        forecastIconURL = "http://openweathermap.org/img/wn/" + forecastIconID + "@2x.png";
+        forecastIconURL = "https://openweathermap.org/img/wn/" + forecastIconID + "@2x.png";
         
         // Temperature
         forecastTemp = Math.round(data.list[j].main.temp * 10) / 10;
@@ -240,7 +240,7 @@ function getForecastSuccess(data){
 function getUVIndex(lat,lon) {
     
     // Concatenate the lat and lon coordinates into the OWM UV index API query URL
-    queryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon  + "&appid=" + openWeatherMapAPIkey;
+    queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon  + "&appid=" + openWeatherMapAPIkey;
     
     // ajax call using the query URL    
     $.ajax({
