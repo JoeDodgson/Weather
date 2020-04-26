@@ -235,7 +235,6 @@ function getForecastSuccess(data){
     }            
 }
 
-
 // A function to retrieve the UV index and update the display on the web page 
 function getUVIndex(lat,lon) {
     
