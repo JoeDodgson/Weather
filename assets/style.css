@@ -68,6 +68,7 @@ h6 {
 .card {
     margin-right: 3%;
     width: 41.667%;
+    color: #343a40 !important;
 }
 
 .card-title {
@@ -124,6 +125,10 @@ h6 {
     margin: 0;
 }
 
+.bg-light-blue, .card {
+    background-color: rgb(215, 223, 248) !important;
+}
+
 
 /* IDs */
 #city-input {
@@ -151,6 +156,11 @@ h6 {
     height: 24px;
 }
 
+.city-history:hover {
+    background-color: grey;
+    color: black;
+    font-weight: bold;
+}
 
 /* Responsiveness */
 @media (min-width: 1px) and (max-width: 767px){
