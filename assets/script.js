@@ -12,30 +12,27 @@ var currentUVIndex;
 // When the document has loaded, display the weather for the last searched city
 $(document).ready(function() {
     
+    // Check if the local storage searchHistory exists
     if (!localStorage.getItem("searchHistory")){
-        // Set the local storage value of searchHistory to be a blank array
+        // If it does not exist, set local storage searchHistory to be a blank array
         localStorage.setItem("searchHistory","['']");
+        window.searchHistory = [""];
     }
-    else if(localStorage.getItem("searchHistory") !== "['']"){
+    // If a blank array, set the local variable to be a blank array
+    else if(localStorage.getItem("searchHistory") == "['']"){
+        window.searchHistory = [""];
+    }
+    else{
+        // Retrieve the  the local searchHistory variable as
+        window.searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
         
-        // If data in searchHistory array, unhide city-weather section of the page
-        $("#city-weather").removeClass("d-none");
-        
-        searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-        
-        // Pass all searched cities into the renderCityHistory function
+        // Pass all searchHistory into the renderCityHistory function
         renderCityHistory(searchHistory);
         
         // Pass the last searched city into the getWeather function    
         getWeather(searchHistory[searchHistory.length - 1]);
     }
-    else{
-        searchHistory = [];
-    }
-
-    console.log(searchHistory);
 });
-
 
 // Event listener for the listed cities. A clicked city is passed into the getWeather function
 $(document).on("click", ".city-history", function() {
@@ -47,18 +44,15 @@ $(document).on("click", ".city-history", function() {
 $("#submit-btn").click(function() {
     // Prevent default actions from happening - e.g. page flickering
     event.preventDefault();
-        
+    
     // Check if the user has typed anything into the search field
     if($("#city-input").val() == ""){
         alert("You must type a city in the Search field");
     }
     else{
-        // Passes the input text into the getWeather function
+        // Pass the input text into the getWeather function
         cityName = $("#city-input").val();
         getWeather(cityName);
-
-        // Call the storeSearch function and pass in the cityName
-        storeSearch(cityName);
         
         // Clear the searched text from the input
         $("#city-input").val("");
@@ -77,7 +71,7 @@ function getWeather(cityName){
         url: queryURL,
         dataType: "json",
         success: function(data){
-            getWeatherSuccess(data);
+            getWeatherSuccess(data,cityName);
         },
         error: function(data){
             getWeatherError(data);
@@ -85,7 +79,8 @@ function getWeather(cityName){
     });
 }
 
-function getWeatherSuccess(data){
+function getWeatherSuccess(data,cityName){
+        
     // Concatenate the returned city name with its country
     dataCityName = data.name + ", " + data.sys.country;
 
@@ -97,7 +92,7 @@ function getWeatherSuccess(data){
         today.getFullYear()
     ]
     
-    //Add a zero in front of the date and month if less than 10
+    // Add a zero in front of the date and month if less than 10
     currentDateArray.forEach(formatDate);
     
     // Concatenate current date into a string
@@ -124,6 +119,9 @@ function getWeatherSuccess(data){
     $("#current-hum").text("Humidity: " + currentHumidity + "%");
     $("#current-wind").text("Wind speed: " + currentWindSpeed + "mph");
     
+    // Call the storeSearch function and pass in the cityName
+    storeSearch(cityName);
+
     // Pass the lat and long coordinates into the getUVIndex() function
     lat = data.coord.lat;
     lon = data.coord.lon;
@@ -134,6 +132,7 @@ function getWeatherSuccess(data){
     
     // Unhide city-weather section of the page
     $("#city-weather").removeClass("d-none");
+    $("#cities-list").removeClass("d-none");
 }
 
 function getWeatherError(){
@@ -317,19 +316,19 @@ function storeSearch(cityName){
     
     // If searchHistory array is blank, set the first element as the searched city
     if(searchHistory[0] == ""){
-        searchHistory[0] = cityName;
+        window.searchHistory[0] = cityName;
     }
     // If the searched city was not in the searchHistory array, add it at the end
     else if(cityNameIndex === -1){
-        searchHistory.push(cityName);
+        window.searchHistory.push(cityName);
     }
     // If the searched city was already in the searchHistory array, move to the last element
     else{
-        var endOfLoop = searchHistory.length
+        var endOfLoop = window.searchHistory.length
         for(i = cityNameIndex; i < endOfLoop; i++){
-            searchHistory[i] = searchHistory[i + 1];
+            window.searchHistory[i] = window.searchHistory[i + 1];
         }
-        searchHistory[endOfLoop - 1] = cityName;
+        window.searchHistory[endOfLoop - 1] = cityName;
     }
     
     // Update the cities shown in the search history
