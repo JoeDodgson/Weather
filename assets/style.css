@@ -17,6 +17,19 @@ h6 {
     font-family: 'Assistant', sans-serif;
 }
 
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+table {
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+th, td {
+    width: 120px;
+}
 
 /* Classes */
 .weather-header {
@@ -80,6 +93,10 @@ h6 {
     Content: " ";
     Display: block;
     Clear: both;
+}
+
+.modal-header {
+    padding: 15px 16px 0 16px;
 }
 
 
@@ -154,6 +171,16 @@ h6 {
     padding: 2.5px 5px 2.5px 5px;
     border-radius: 5px;
     height: 24px;
+}
+
+#modal-title {
+    display: block;
+    text-align: center;
+}
+
+#modal-UVIndex {
+    position: absolute;
+    width: auto;
 }
 
 .city-history:hover {

@@ -8,6 +8,7 @@ var currentTemp;
 var currentHumidity;
 var currentWindSpeed;
 var currentUVIndex;
+var modalUV = $("#modal-UVIndex");
 
 // When the document has loaded, display the weather for the last searched city
 $(document).ready(function() {
@@ -343,3 +344,25 @@ function formatDate(item, index, arr){
         arr[index] = "0" + arr[index];
     }
 }
+
+
+// Event listener to display the UV index when mouse hovers over the UV index value
+$("#current-uv").mouseenter(function(event){
+    // Record the X and Y position of the mouse when it entered the current-UV element
+    var coordX = event.clientX;
+    var coordY = event.clientY;
+
+    // Set the position of the modal to be the same as the 
+    modalUV.css("left", coordX + "px");
+    modalUV.css("top", coordY + "px");
+
+    // Displays the UV index modal
+    modalUV.removeClass("d-none");
+})
+
+
+// Event listener to hide the UV index when mouse leaves the UV index value
+$("#current-uv").mouseleave(function(){
+    // Hides the UV index modal
+    modalUV.addClass("d-none");
+})
