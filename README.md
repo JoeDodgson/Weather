@@ -4,7 +4,7 @@ Description: A weather dashboard web page that allows the user to search for any
 
 Installation: No installation required
 
-Usage: Access the web page at https://joedodgson.github.io/Coursework-6-Weather-Dashboard/
+Usage: Access the web page at https://joedodgson.github.io/Weather-Dashboard/
 
 To find the current weather and 5-day weather forecast for any city, type the city name into the 'search' field and click the search icon. You can click on any city from the past searches to bring up its current weather and 5-day forecast.
 
