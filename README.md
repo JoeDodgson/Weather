@@ -1,15 +1,40 @@
-# Coursework-6-Weather-Dashboard
+# Weather Dashboard
 
-Description: A weather dashboard web page that allows the user to search for any city to see the current weather and a 5 day weather forecast. The page stores and displays the user's searched cities and the user can select any city from their search history. The web page calls the OpenWeatherMap API to retrieve weather data.
+## Table of contents:
+1. Description
+2. Installation
+3. Usage
+4. Author
+5. Contributing
+6. License
+7. Tests
+8. Contact
 
-Installation: No installation required
+## 1. Description:
+A weather dashboard web page that allows the user to search for any city to see the current weather and a 5 day forecast
 
-Usage: Access the web page at https://joedodgson.github.io/Weather-Dashboard/
+## 2. Installation:
+No installation required
 
-To find the current weather and 5-day weather forecast for any city, type the city name into the 'search' field and click the search icon. You can click on any city from the past searches to bring up its current weather and 5-day forecast.
+## 3. Usage:
+Access the web page at http://joedodgson.github.io/Coursework-6-Weather-Dashboard/
 
-Contribution: By Joe Dodgson only
+## 4. Author:
+Joe Dodgson
+Github username: JoeDodgson
+<img src="https://avatars2.githubusercontent.com/u/50573262?v=4">
 
-Credits: Thanks to my teachers and tutors of the Trilogy Coding Bootcamp
+## 5. Contributing:
+By Joe Dodgson only
 
-License: Open source
+## 6. License:
+
+![GitHub](https://img.shields.io/github/license/JoeDodgson/Coursework-6-Weather-Dashboard?logoColor=%23ff0000)
+
+## 7. Tests:
+The project passed the following tests:
+No testing framework was used for this project
+
+## 8. Contact:
+For any questions about this project, please contact Joe Dodgson at the following email address:
+joe.dodgson@live.co.uk
