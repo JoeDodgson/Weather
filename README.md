@@ -17,7 +17,7 @@ A weather dashboard web page that allows the user to search for any city to see 
 No installation required
 
 ## 3. Usage:
-Access the web page at http://joedodgson.github.io/Coursework-6-Weather-Dashboard/
+Access the web page at https://joedodgson.github.io/Weather/
 
 ## 4. Author:
 Joe Dodgson
